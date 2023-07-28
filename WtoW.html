@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Encryption and Decryption</title>
+  <script>
+    // Your encryption and decryption functions here...
+    function charToNumber(char) {
+      return char.charCodeAt(0) - "A".charCodeAt(0);
+    }
+
+    function numberToChar(num) {
+      return String.fromCharCode(num + "A".charCodeAt(0));
+    }
+
+    function encrypt(plaintext) {
+      return transformText(plaintext, 3, "encrypt");
+    }
+
+    function decrypt(ciphertext) {
+      return transformText(ciphertext, 3, "decrypt");
+    }
+
+    function transformText(text, key, operation) {
+      let result = "";
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const numericValue = charToNumber(char);
+        let transformedValue;
+        if (operation === "encrypt") {
+          transformedValue = (numericValue + key) % 26;
+        } else if (operation === "decrypt") {
+          transformedValue = (numericValue - key + 26) % 26;
+        } else {
+          throw new Error("Invalid operation: " + operation);
+        }
+        result += numberToChar(transformedValue);
+      }
+      return result;
+    }
+  </script>
+</head>
+<body>
+  <h1>Encryption and Decryption</h1>
+  <label for="input">Enter Text:</label>
+  <input type="text" id="input" />
+  <br />
+  <button onclick="encryptText()">Encrypt</button>
+  <button onclick="decryptText()">Decrypt</button>
+  <br />
+  <label for="output">Result:</label>
+  <input type="text" id="output" readonly />
+  
+  <script>
+    function updateOutput(result) {
+      document.getElementById("output").value = result;
+    }
+
+    function encryptText() {
+      const inputText = document.getElementById("input").value;
+      const encryptedText = encrypt(inputText);
+      updateOutput(encryptedText);
+    }
+
+    function decryptText() {
+      const inputText = document.getElementById("input").value;
+      const decryptedText = decrypt(inputText);
+      updateOutput(decryptedText);
+    }
+  </script>
+</body>
+</html>
