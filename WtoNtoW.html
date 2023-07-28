@@ -81,20 +81,33 @@
   </div>
 
   <script>
+
     function textToNumber(text) {
-      // Your existing function remains unchanged.
+      let result = "";
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        result += char.charCodeAt(0).toString().padStart(3, "0");
+      }
+      return result;
     }
 
     function numberToText(numberString) {
-      // Your existing function remains unchanged.
+      let result = "";
+      for (let i = 0; i < numberString.length; i += 3) {
+        const num = parseInt(numberString.substr(i, 3));
+        result += String.fromCharCode(num);
+      }
+      return result;
     }
 
     function encrypt(plaintext) {
-      // Your existing function remains unchanged.
+      const numericText = textToNumber(plaintext);
+      return numericText;
     }
 
     function decrypt(ciphertext) {
-      // Your existing function remains unchanged.
+      const textResult = numberToText(ciphertext);
+      return textResult;
     }
 
     function updateOutput(result) {
@@ -102,17 +115,22 @@
     }
 
     function encryptText() {
-      // Your existing function remains unchanged.
+      const inputText = document.getElementById("input").value;
+      const encryptedText = encrypt(inputText);
+      updateOutput(encryptedText);
     }
 
     function decryptText() {
-      // Your existing function remains unchanged.
+      const inputText = document.getElementById("input").value;
+      const decryptedText = decrypt(inputText);
+      updateOutput(decryptedText);
     }
 
     function changeZoom() {
       const zoomValue = document.getElementById("zoom-select").value;
       document.body.style.zoom = zoomValue + "%";
     }
+
   </script>
-</body>
+</body>   
 </html>
