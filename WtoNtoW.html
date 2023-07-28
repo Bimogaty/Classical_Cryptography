@@ -2,6 +2,46 @@
 <html>
 <head>
   <title>Encryption and Decryption</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    label {
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      padding: 5px;
+      margin: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 300px;
+    }
+
+    button {
+      padding: 8px 15px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    #output {
+      margin-top: 10px;
+    }
+  </style>
   <script>
     function textToNumber(text) {
       let result = "";
@@ -30,20 +70,7 @@
       const textResult = numberToText(ciphertext);
       return textResult;
     }
-  </script>
-</head>
-<body>
-  <h1>Encryption and Decryption</h1>
-  <label for="input">Enter Text:</label>
-  <input type="text" id="input" />
-  <br />
-  <button onclick="encryptText()">Encrypt</button>
-  <button onclick="decryptText()">Decrypt</button>
-  <br />
-  <label for="output">Result:</label>
-  <input type="text" id="output" readonly />
-  
-  <script>
+
     function updateOutput(result) {
       document.getElementById("output").value = result;
     }
@@ -60,5 +87,16 @@
       updateOutput(decryptedText);
     }
   </script>
+</head>
+<body>
+  <h1>Encryption and Decryption</h1>
+  <label for="input">Enter Text:</label>
+  <input type="text" id="input" />
+  <br />
+  <button onclick="encryptText()">Encrypt</button>
+  <button onclick="decryptText()">Decrypt</button>
+  <br />
+  <label for="output">Result:</label>
+  <input type="text" id="output" readonly />
 </body>
 </html>
