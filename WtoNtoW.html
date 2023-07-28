@@ -8,10 +8,6 @@
       text-align: center;
       margin: 20px;
       position: relative;
-
-      background-image: url('photo_2023-07-28 21.15.04.jpeg');
-      background-size: cover;
-      background-repeat: no-repeat;
     }
 
     h1 {
@@ -68,13 +64,14 @@
 <body>
   <h1>Encryption and Decryption</h1>
   <label for="input">Enter Texts and Numbers:</label>
-  <input type="text" id="input" />
+  <input type="text" id="input" oninput="convertToLowercase()" />
   <br />
-  <button onclick="encryptText()">Encrypt</button>
-  <button onclick="decryptText()">Decrypt</button>
+  <button onclick="encryptText()" >Encrypt</button>
+  <button onclick="decryptText()" >Decrypt</button>
   <br />
   <label for="output">Result:</label>
   <input type="text" id="output" readonly>
+
 
   <!-- Zoom selector in a separate container -->
   <div class="zoom-container">
@@ -139,6 +136,10 @@
       document.body.style.zoom = zoomValue + "%";
     }
 
+    function convertToLowercase() {
+      const inputElement = document.getElementById("input");
+      inputElement.value = inputElement.value.toUpperCase();
+    }
   </script>
 </body>   
 </html>
